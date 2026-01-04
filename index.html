@@ -19,121 +19,103 @@ body{
   min-height:100vh;
   padding:20px;
 }
-.container{
-  max-width:500px;
-  width:100%;
-  text-align:center;
-}
+.container{max-width:520px;width:100%;text-align:center}
 .profile-img{
-  width:130px;height:130px;
-  border-radius:50%;
-  border:4px solid #fff;
-  margin-bottom:10px;
+  width:130px;height:130px;border-radius:50%;
+  border:4px solid #fff;margin-bottom:10px;
 }
-h1{margin:10px 0 20px;}
-.link,.pharaoh-btn{
+h1{margin:10px 0 20px}
+
+.link{
   background:rgba(255,255,255,.15);
-  padding:15px;
-  border-radius:12px;
-  margin-bottom:15px;
-  color:white;
-  text-decoration:none;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  font-size:18px;
-  transition:.3s;
+  padding:15px;border-radius:12px;
+  margin-bottom:15px;color:white;
+  text-decoration:none;display:flex;
+  justify-content:center;align-items:center;
+  gap:10px;font-size:18px;transition:.3s;
 }
-.link:hover,.pharaoh-btn:hover{
-  background:rgba(255,255,255,.3);
-  transform:translateY(-3px);
-}
+.link:hover{background:rgba(255,255,255,.3)}
+
 .pharaoh-btn{
   background:linear-gradient(135deg,#f7971e,#ffd200);
-  color:#2c2c2c;
-  font-weight:bold;
+  color:#2c2c2c;font-weight:bold;
+  padding:15px;border-radius:14px;
+  cursor:pointer;margin-bottom:15px;
 }
-.box{
-  display:none;
-  background:rgba(255,255,255,.1);
-  padding:20px;
-  border-radius:12px;
-  margin-top:15px;
+
+/* شريط التقدم */
+.progress-box{
+  background:rgba(255,255,255,.15);
+  border-radius:14px;
+  padding:15px;
+  margin-bottom:15px;
 }
-.box.active{display:block}
 .progress{
   background:rgba(0,0,0,.3);
   border-radius:20px;
   overflow:hidden;
-  margin-bottom:15px;
 }
 .progress-bar{
   width:63%;
   background:linear-gradient(90deg,#00c6ff,#0072ff);
   padding:8px;
   font-size:14px;
+  border-radius:20px;
 }
-.ranks{
-  text-align:right;
-  line-height:2;
-  margin-bottom:15px;
+
+/* المربعات البيضاء المتراكبة */
+.box{
+  background:rgba(255,255,255,.95);
+  color:#222;
+  padding:18px;
+  border-radius:16px;
+  margin-top:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  display:none;
 }
-.pharaoh-instagram{
-  margin-bottom:15px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
+.box.active{display:block}
+
+.rank-btn{
+  background:rgba(0,0,0,.05);
+  padding:12px;border-radius:10px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:.3s;
 }
-.pharaoh-instagram input{
-  padding:8px;
-  border-radius:8px;
-  border:none;
-  width:180px;
-  font-size:14px;
+.rank-btn:hover{background:rgba(0,0,0,.1)}
+
+input{
+  padding:10px;border-radius:8px;
+  border:none;width:80%;
+  font-size:15px;
 }
+
 .crypto-btn{
-  background:rgba(255,255,255,.15);
-  border:none;
-  padding:12px;
-  width:100%;
-  color:white;
+  background:rgba(0,0,0,.07);
+  border:none;padding:12px;
+  width:100%;color:#222;
   border-radius:10px;
   margin-bottom:10px;
-  font-size:16px;
-  cursor:pointer;
+  font-size:16px;cursor:pointer;
 }
+
 .wallet{
-  background:rgba(0,0,0,.3);
-  padding:10px;
-  border-radius:8px;
+  background:rgba(0,0,0,.1);
+  padding:10px;border-radius:8px;
   font-family:monospace;
   font-size:14px;
-  margin-bottom:10px;
   direction:ltr;
-  display:flex;
-  justify-content:space-between;
+  display:flex;justify-content:space-between;
   align-items:center;
-  gap:10px;
 }
 .copy-btn{
   cursor:pointer;
-  font-size:18px;
   padding:5px 8px;
+  background:rgba(0,0,0,.1);
   border-radius:6px;
-  background:rgba(255,255,255,.15);
-  transition:.3s;
 }
-.copy-btn:hover{
-  background:rgba(255,255,255,.3);
-}
-.qr{
-  width:140px;
-  margin:10px auto;
-  display:block;
-  border-radius:10px;
-}
+.qr{width:150px;margin:10px auto;border-radius:10px}
+
 .footer{margin-top:25px;opacity:.7}
 </style>
 </head>
@@ -145,59 +127,64 @@ h1{margin:10px 0 20px;}
 <h1>fir3awn</h1>
 
 <a class="link" href="https://www.tiktok.com/@fir3awn_officiell" target="_blank">
-  <i class="fab fa-tiktok"></i> TikTok
+<i class="fab fa-tiktok"></i> TikTok
 </a>
 
 <a class="link" href="https://www.instagram.com/fir3awn_officiell" target="_blank">
-  <i class="fab fa-instagram"></i> Instagram
+<i class="fab fa-instagram"></i> Instagram
 </a>
 
-<div class="pharaoh-btn" id="toggle">
-  👑 كن من ملوك الفراعنة
+<div class="pharaoh-btn" onclick="toggleRanks()">👑 كن من ملوك الفراعنة</div>
+
+<!-- نسبة اكتمال الفريق -->
+<div class="progress-box">
+  <strong>👥 اكتمال الفريق</strong>
+  <div class="progress">
+    <div class="progress-bar">63%</div>
+  </div>
 </div>
 
-<div class="box" id="box">
+<!-- الرتب -->
+<div class="box" id="ranksBox">
+  <div class="rank-btn" onclick="selectRank('🪖 جندي - 1$')">🪖 جندي – 1$</div>
+  <div class="rank-btn" onclick="selectRank('⭐ ضابط صف - 3$')">⭐ ضابط صف – 3$</div>
+  <div class="rank-btn" onclick="selectRank('⭐⭐ رئيس ضباط - 5$')">⭐⭐ رئيس ضباط – 5$</div>
+  <div class="rank-btn" onclick="selectRank('⭐⭐⭐ ضابط سامي - 10$')">⭐⭐⭐ ضابط سامي – 10$</div>
+  <div class="rank-btn" onclick="selectRank('👑 ملك - 30$')">👑 ملك – 30$</div>
+  <div class="rank-btn" onclick="selectRank('👑✨ آمون - 100$+')">👑✨ آمون – 100$+</div>
+</div>
 
-  <div class="progress">
-    <div class="progress-bar">اكتمال العائلة 63%</div>
-  </div>
+<!-- انستقرام -->
+<div class="box" id="instagramBox">
+  <p id="rankText"></p>
+  <input placeholder="اسم مستخدم Instagram" id="instaUser">
+  <br><br>
+  <button class="crypto-btn" onclick="confirmInstagram()">متابعة</button>
+</div>
 
-  <div class="ranks">
-    🪖 جنود: 1$<br>
-    ⭐ ضباط صف فراعنة: 3$<br>
-    ⭐⭐ رؤساء ضباط صف: 5$<br>
-    ⭐⭐⭐ ضباط سامون: 10$<br>
-    👑 ملوك: 30$<br>
-    👑✨ آمون: فوق 100$
-  </div>
+<!-- اختيار العملة -->
+<div class="box" id="cryptoBox">
+  <button class="crypto-btn" onclick="showPay('usdt')">USDT (BEP20)</button>
+  <button class="crypto-btn" onclick="showPay('usdc')">USDC (BEP20)</button>
+</div>
 
-  <!-- حقل Instagram للمتابعين -->
-  <div class="pharaoh-instagram">
-    <i class="fab fa-instagram"></i>
-    <input type="text" placeholder="Instagram username" id="pharaohUsername">
-  </div>
-
-  <button class="crypto-btn" onclick="showPay('usdt')">USDT (BEP-20)</button>
-  <button class="crypto-btn" onclick="showPay('usdc')">USDC (BEP-20)</button>
-
-  <!-- USDT -->
+<!-- الدفع -->
+<div class="box" id="payBox">
   <div id="usdt" style="display:none">
     <div class="wallet">
-      <span id="usdtAddr">0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0</span>
-      <span class="copy-btn" onclick="copyText('usdtAddr')">⿻</span>
+      <span>0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0</span>
+      <span class="copy-btn" onclick="copy()">⿻</span>
     </div>
     <img src="https://i.imgur.com/Urfs5FW.jpeg" class="qr">
   </div>
 
-  <!-- USDC -->
   <div id="usdc" style="display:none">
     <div class="wallet">
-      <span id="usdcAddr">0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0</span>
-      <span class="copy-btn" onclick="copyText('usdcAddr')">⿻</span>
+      <span>0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0</span>
+      <span class="copy-btn" onclick="copy()">⿻</span>
     </div>
     <img src="https://i.imgur.com/XXqyJ6Z.jpeg" class="qr">
   </div>
-
 </div>
 
 <div class="footer">👑 المجد للفراعنة</div>
@@ -205,20 +192,33 @@ h1{margin:10px 0 20px;}
 </div>
 
 <script>
-document.getElementById("toggle").onclick = ()=>{
-  document.getElementById("box").classList.toggle("active");
+function toggleRanks(){
+  document.getElementById("ranksBox").classList.add("active")
+}
+
+function selectRank(rank){
+  document.getElementById("rankText").innerText = "👑 الرتبة المختارة: " + rank
+  document.getElementById("instagramBox").classList.add("active")
+}
+
+function confirmInstagram(){
+  if(document.getElementById("instaUser").value===""){
+    alert("أدخل اسم مستخدم انستقرام")
+    return
+  }
+  document.getElementById("cryptoBox").classList.add("active")
 }
 
 function showPay(type){
-  document.getElementById("usdt").style.display="none";
-  document.getElementById("usdc").style.display="none";
-  document.getElementById(type).style.display="block";
+  document.getElementById("payBox").classList.add("active")
+  document.getElementById("usdt").style.display="none"
+  document.getElementById("usdc").style.display="none"
+  document.getElementById(type).style.display="block"
 }
 
-function copyText(id){
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text);
-  alert("تم نسخ العنوان!");
+function copy(){
+  navigator.clipboard.writeText("0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0")
+  alert("تم نسخ العنوان")
 }
 </script>
 
