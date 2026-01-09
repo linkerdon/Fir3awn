@@ -1,225 +1,214 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>fir3awn | Pharaohs</title>
+<meta charset="utf-8">
+<title>تبرع إنساني</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 body{
   margin:0;
-  font-family:'Segoe UI',Tahoma;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:#fff;
+  font-family:Arial,sans-serif;
+  background:#fff;
+  color:#333;
   display:flex;
   justify-content:center;
   align-items:center;
   min-height:100vh;
   padding:20px;
+  direction:rtl;
 }
-.container{max-width:520px;width:100%;text-align:center}
-.profile-img{
-  width:130px;height:130px;border-radius:50%;
-  border:4px solid #fff;margin-bottom:10px;
-}
-h1{margin:10px 0 20px}
-
-.link{
-  background:rgba(255,255,255,.15);
-  padding:15px;border-radius:12px;
-  margin-bottom:15px;color:white;
-  text-decoration:none;display:flex;
-  justify-content:center;align-items:center;
-  gap:10px;font-size:18px;transition:.3s;
-}
-.link:hover{background:rgba(255,255,255,.3)}
-
-.pharaoh-btn{
-  background:linear-gradient(135deg,#f7971e,#ffd200);
-  color:#2c2c2c;font-weight:bold;
-  padding:15px;border-radius:14px;
-  cursor:pointer;margin-bottom:15px;
-}
-
-/* شريط التقدم */
-.progress-box{
-  background:rgba(255,255,255,.15);
-  border-radius:14px;
-  padding:15px;
-  margin-bottom:15px;
-}
-.progress{
-  background:rgba(0,0,0,.3);
+.card{
+  background:#fff;
+  padding:2.5rem;
   border-radius:20px;
-  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+  max-width:600px;
+  width:100%;
 }
+h2,h1{text-align:center;color:#264e36}
+h1{font-size:1.2rem;line-height:1.6;margin-bottom:2rem}
+
+/* progress */
+.progress-container{background:#eee;border-radius:12px;overflow:hidden}
 .progress-bar{
-  width:63%;
-  background:linear-gradient(90deg,#00c6ff,#0072ff);
+  width:6%;
+  background:#4CAF50;
+  color:#fff;
   padding:8px;
-  font-size:14px;
-  border-radius:20px;
+  font-weight:bold;
+  text-align:center;
 }
+.progress-text{text-align:center;margin-top:8px;color:#555}
 
-/* المربعات البيضاء المتراكبة */
-.box{
-  background:rgba(255,255,255,.95);
-  color:#222;
-  padding:18px;
-  border-radius:16px;
-  margin-top:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
-  display:none;
+/* payments */
+.payment-section{
+  margin-top:2rem;
+  padding:20px;
+  border:1px solid #eee;
+  border-radius:12px;
 }
-.box.active{display:block}
-
-.rank-btn{
-  background:rgba(0,0,0,.05);
-  padding:12px;border-radius:10px;
-  margin-bottom:10px;
-  cursor:pointer;
-  transition:.3s;
-}
-.rank-btn:hover{background:rgba(0,0,0,.1)}
-
+label{font-weight:bold}
 input{
-  padding:10px;border-radius:8px;
-  border:none;width:80%;
-  font-size:15px;
+  width:100%;
+  max-width:250px;
+  margin:10px auto;
+  display:block;
+  padding:10px;
+  text-align:center;
 }
+#paypal-buttons{max-width:300px;margin:auto}
 
-.crypto-btn{
-  background:rgba(0,0,0,.07);
-  border:none;padding:12px;
-  width:100%;color:#222;
+.btn-crypto{
+  background:#FF9800;
+  color:#fff;
+  border:none;
+  padding:12px;
+  width:100%;
   border-radius:10px;
-  margin-bottom:10px;
-  font-size:16px;cursor:pointer;
-}
-
-.wallet{
-  background:rgba(0,0,0,.1);
-  padding:10px;border-radius:8px;
-  font-family:monospace;
-  font-size:14px;
-  direction:ltr;
-  display:flex;justify-content:space-between;
-  align-items:center;
-}
-.copy-btn{
   cursor:pointer;
-  padding:5px 8px;
-  background:rgba(0,0,0,.1);
-  border-radius:6px;
 }
-.qr{width:150px;margin:10px auto;border-radius:10px}
 
-.footer{margin-top:25px;opacity:.7}
+/* modal */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:9999;
+}
+.modal-content{
+  background:#fff;
+  margin:10% auto;
+  padding:25px;
+  max-width:450px;
+  border-radius:12px;
+  position:relative;
+}
+.close-btn{
+  position:absolute;
+  top:10px;
+  left:15px;
+  font-size:28px;
+  cursor:pointer;
+}
+.currency-select{width:100%;padding:10px}
+.qr-code-img{width:180px;display:block;margin:15px auto}
+
+.crypto-box p{
+  background:#f0f0f0;
+  padding:8px;
+  border-radius:6px;
+  word-break:break-all;
+}
+
+.copy-btn{
+  margin-top:10px;
+  background:#264e36;
+  color:#fff;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* hide paypal */
+.hide-paypal{display:none!important}
 </style>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AYFnGtu8Fp6ub46331TVrv2zzTXsvhX5DZzBndV7thFATp-QemeqtQp14XmnVDjzgT9Q1ZGFvCOQPebG&currency=USD"></script>
 </head>
 
 <body>
-<div class="container">
+<div class="card">
 
-<img src="https://i.imgur.com/hEZbkQI.jpeg" class="profile-img">
-<h1>fir3awn</h1>
+<h2>🤍 حملة تبرع</h2>
+<h1>
+انا مريض بورم سرطان عفاكم الله<br>
+ثمن العملية <strong>235,000 دولار</strong><br>
+كل درهم تحطوه زرعتوا فيا الأمل 🌱
+</h1>
 
-<a class="link" href="https://www.tiktok.com/@fir3awn_officiell" target="_blank">
-<i class="fab fa-tiktok"></i> TikTok
-</a>
+<div class="progress-container">
+  <div class="progress-bar">6%</div>
+</div>
+<div class="progress-text">تم جمع 6% من المبلغ المطلوب</div>
 
-<a class="link" href="https://www.instagram.com/fir3awn_officiell" target="_blank">
-<i class="fab fa-instagram"></i> Instagram
-</a>
-
-<div class="pharaoh-btn" onclick="toggleRanks()">👑 كن من ملوك الفراعنة</div>
-
-<!-- نسبة اكتمال الفريق -->
-<div class="progress-box">
-  <strong>👥 اكتمال الفريق</strong>
-  <div class="progress">
-    <div class="progress-bar">63%</div>
-  </div>
+<div class="payment-section">
+<label>مبلغ التبرع (USD)</label>
+<input type="number" id="donation-amount" value="20" min="1">
+<div id="paypal-buttons"></div>
 </div>
 
-<!-- الرتب -->
-<div class="box" id="ranksBox">
-  <div class="rank-btn" onclick="selectRank('🪖 جندي - 1$')">🪖 جندي – 1$</div>
-  <div class="rank-btn" onclick="selectRank('⭐ ضابط صف - 3$')">⭐ ضابط صف – 3$</div>
-  <div class="rank-btn" onclick="selectRank('⭐⭐ رئيس ضباط - 5$')">⭐⭐ رئيس ضباط – 5$</div>
-  <div class="rank-btn" onclick="selectRank('⭐⭐⭐ ضابط سامي - 10$')">⭐⭐⭐ ضابط سامي – 10$</div>
-  <div class="rank-btn" onclick="selectRank('👑 ملك - 30$')">👑 ملك – 30$</div>
-  <div class="rank-btn" onclick="selectRank('👑✨ آمون - 100$+')">👑✨ آمون – 100$+</div>
+<div class="payment-section">
+<button class="btn-crypto" id="openCrypto">التبرع بالعملات الرقمية</button>
 </div>
 
-<!-- انستقرام -->
-<div class="box" id="instagramBox">
-  <p id="rankText"></p>
-  <input placeholder="اسم مستخدم Instagram" id="instaUser">
-  <br><br>
-  <button class="crypto-btn" onclick="confirmInstagram()">متابعة</button>
 </div>
 
-<!-- اختيار العملة -->
-<div class="box" id="cryptoBox">
-  <button class="crypto-btn" onclick="showPay('usdt')">USDT (BEP20)</button>
-  <button class="crypto-btn" onclick="showPay('usdc')">USDC (BEP20)</button>
+<!-- modal -->
+<div id="cryptoModal" class="modal">
+<div class="modal-content">
+<span class="close-btn">&times;</span>
+<h3>التبرع بالكريبتو</h3>
+
+<select id="currency" class="currency-select">
+<option disabled selected>اختر العملة</option>
+<option value="usdt">USDT (BEP20)</option>
+<option value="usdc">USDC (BEP20)</option>
+</select>
+
+<div id="cryptoBox" class="crypto-box"></div>
 </div>
-
-<!-- الدفع -->
-<div class="box" id="payBox">
-  <div id="usdt" style="display:none">
-    <div class="wallet">
-      <span>0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0</span>
-      <span class="copy-btn" onclick="copy()">⿻</span>
-    </div>
-    <img src="https://i.imgur.com/Urfs5FW.jpeg" class="qr">
-  </div>
-
-  <div id="usdc" style="display:none">
-    <div class="wallet">
-      <span>0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0</span>
-      <span class="copy-btn" onclick="copy()">⿻</span>
-    </div>
-    <img src="https://i.imgur.com/XXqyJ6Z.jpeg" class="qr">
-  </div>
-</div>
-
-<div class="footer">👑 المجد للفراعنة</div>
-
 </div>
 
 <script>
-function toggleRanks(){
-  document.getElementById("ranksBox").classList.add("active")
-}
+const wallet="0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0";
+const data={
+usdt:{qr:"https://i.imgur.com/Urfs5FW.jpeg",net:"BEP20"},
+usdc:{qr:"https://i.imgur.com/XXqyJ6Z.jpeg",net:"BEP20"}
+};
 
-function selectRank(rank){
-  document.getElementById("rankText").innerText = "👑 الرتبة المختارة: " + rank
-  document.getElementById("instagramBox").classList.add("active")
-}
+const modal=document.getElementById("cryptoModal");
+const paypalBox=document.getElementById("paypal-buttons");
 
-function confirmInstagram(){
-  if(document.getElementById("instaUser").value===""){
-    alert("أدخل اسم مستخدم انستقرام")
-    return
-  }
-  document.getElementById("cryptoBox").classList.add("active")
-}
+document.getElementById("openCrypto").onclick=()=>{
+ modal.style.display="block";
+ paypalBox.classList.add("hide-paypal");
+ document.getElementById("cryptoBox").innerHTML="";
+};
 
-function showPay(type){
-  document.getElementById("payBox").classList.add("active")
-  document.getElementById("usdt").style.display="none"
-  document.getElementById("usdc").style.display="none"
-  document.getElementById(type).style.display="block"
-}
+document.querySelector(".close-btn").onclick=()=>{
+ modal.style.display="none";
+ paypalBox.classList.remove("hide-paypal");
+};
 
-function copy(){
-  navigator.clipboard.writeText("0x6eacffa827a7667b6a8bfc9bbe9491a6fc1d86c0")
-  alert("تم نسخ العنوان")
-}
+window.onclick=e=>{
+ if(e.target===modal){
+  modal.style.display="none";
+  paypalBox.classList.remove("hide-paypal");
+ }
+};
+
+document.getElementById("currency").onchange=function(){
+ const c=data[this.value];
+ cryptoBox.innerHTML=`
+ <p>${wallet}</p>
+ <button class="copy-btn" onclick="navigator.clipboard.writeText('${wallet}')">نسخ العنوان</button>
+ <img src="${c.qr}" class="qr-code-img">
+ <p style="text-align:center">استخدم شبكة ${c.net} فقط</p>
+ `;
+};
+
+paypal.Buttons({
+ createOrder:(d,a)=>a.order.create({
+  purchase_units:[{amount:{value:donation-amount.value}}]
+ }),
+ onApprove:(d,a)=>a.order.capture().then(()=>{
+  alert("تم التبرع بنجاح 🤍")
+ })
+}).render("#paypal-buttons");
 </script>
 
 </body>
